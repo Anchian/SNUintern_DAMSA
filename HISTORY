@@ -1,0 +1,67 @@
+                              Fixed inconsistent definitions of resonant energy in DMProcessAnnihilation and AnnihilationStepLimiter
+                              Simplified methods in AnnihilationStepLimiter class
+                              Fixed instances where kinetic energy was used instead of total energy in DMProcessAnnihilation
+                              Declare some variables long double to solve precision issues in annihilation classes
+                              Add variable EKinThresh (kinematic threshold) and use it instead of big margin value 2*MA
+                              Add option to build and use library on MacOS : flat_namespace
+                              
+03.01.2023   Version 2.5      Urgent update connected with the usage of the latest Geant4 version 11.02, where reading user's ordtable is absent
+                              README is updated according to migration of lxplus to el9 and the above change
+
+06.12.2023   Version 2.4      Implemented Z' annihilation resonant production for the models Lmu-Ltau, B-L
+                              Implement atomic effects in annihilation resonant production
+                              Improvements in annihilation resonant production simulation (step limitation)
+                              Add possibility of invisible ALP production
+                              Change method of total cross section interpolation from the prepared table, this fixes a rare bug of negative cross section
+                              near the threshold
+                              Add protection against too low threshold EThresh and diagnostics of negative cross section
+
+20.10.2023   Version 2.3      Reorganized classes of annihilation processes, the list of such processes revised, added missing pieces
+                              Improved simulation of ALP production in Primakoff effect (proper angle sampling)
+                              Bug fixed in the usage of Bremsstrahlung cross sections for the masses below 1 MeV for S, P, A mediators
+
+24.10.2022   Version 2.2      Add possibility of more complicated semivisible DM models, with asymmetric decays
+                              In addition to Z', a possibility to emit muophilic scalar and pseudoscalar DM particle is added, for the moment only fully invisible
+                              Extend some K-factor tables to 3 GeV
+                              Add spin 2 DM model, coupling to electrons and positrons, brem. and annihilation production channels, for the moment only
+                              fully invisible.
+
+06.07.2022   Version 2.1      Consistent usage of Geant4 system of units in the DMG4 part, in particular in DarkMatterPhysicsConfigure
+                              Fix bug in the calculation of MeanFreePath, which increases the yield of DM by 10%
+                              Fix units in subpackage DarkMatter, remove its dependency on Geant4 (but it still depends on CLHEP taken through Geant4)
+                              Add example11 which builds a Geant4 application with DMG4
+                              Add possibility of semivisible DM production (inelastic DM with the new DM particles Chi2 and Chi1)
+                              Clean some warnings and code style
+
+02.06.2022   Version 2.0      Reorganization of the DMG4 code. The number of DM particle singletons is reduced, the corresponding codes put in a subdirectory.
+                              The class DarkMatterParametersFactory is added in order to specify different decay options in the same particle constructor.
+                              This way a possibility of a B-L vector particle is added (can decay to SM particles, for example e+e-, mu+mu-).
+                              Particle name and PDG ID now depend on stability and on BranchingType. Particle subtype name is only one per constructor.
+                              Further optimisation of the sampling limits for DarkZ
+                              A few bugs fixed in the cross section tables, the smooth transition between the mass regions below and above the mass of 1 MeV
+                              is ensured.
+                              K-factors extended above the mass of 1 GeV up to 3 GeV for some particles.
+                              A minor bug is fixed in the processes (small energy non-conservation due to inconsistent usage of total and kinetic energies)
+
+18.03.2022   Version 1.2      Analytical expression for ds/dx in WW approximation is implemented for DarkZ (muon beam).
+                              Maximal Psi is made x-dependent in the sampling of DarkZ events. The number of events truncated by this cut is now
+                              <10-3 (<10-4 for the masses above 1 MeV).
+                              Other improvements in DarkZ.
+                              For DarkZ (all DM masses) and for electron Brem (DM masses below 1 MeV) processes the parameter Threshold is now treated
+                              not only as a minimal parent particle energy, but also as a minimal emitted DM energy. This significantly improves
+                              the efficiency of simulation sample production. 
+                              Small bugs fixed in K-factor tables. K-factors tables below 1 Mev extended for other DM types. This is the last version
+                              before the major reorganization of the code.
+
+06.09.2021   Version 1.1      Moved to using the analytical formula for the "flux" in the electron beams. Cross section drops because of this, it was
+                              overestimated in the previous code because of a bug. Enable simulation of Dark Photons with the mass below 1 MeV.
+
+30.06.2021   Version 1.0      Unlike electron beams, where IWW approximation is used, we moved to WW formulas in Muon Bremsstrahlung process (Z' emission).
+                              In this approximation the total cross sections are in good agreement with the ETL calculations (within 1 - 2%), so K-factors
+                              are not needed. 
+
+26.04.2021   Version Beta 3   All simulations are now made with correct Xmax. There is now maximal DM particle mass that can be simulated (1 GeV now)
+
+31.03.2021   Version Beta 2   Fixed incorrect Xmax in differential CS (remained only for scalars, pseudoscalars and axials with mass > 20 MeV if decay is on)
+
+22.02.2021   Version Beta 1   Initial version
